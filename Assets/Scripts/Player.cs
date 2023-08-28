@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] Transform pivot;
     Camera cam;
     Vector3 tempPos;
+    LineRenderer lineRenderer;
+
 
     private void Awake()
     {
-        
+        lineRenderer = GetComponent<LineRenderer>();
     }
     void Start()
     {
-        cam = Camera.main;    
+        cam = Camera.main;  
+        lineRenderer.SetPosition(0, pivot.position);
+        lineRenderer.SetPosition(1, transform.position);
     }
 
     void Update()
