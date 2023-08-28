@@ -31,5 +31,11 @@ public class Player : MonoBehaviour
         tempPos = cam.ScreenToWorldPoint(Input.mousePosition); // zamieniamy pozycjê kursora myszy (piksel) na pozycjê w œwiecie (liczby)
         tempPos.z = 0f; // camera ustawiona jest standardowo na z = -10 i dlatego musimy to zmieniæ na 0
         transform.position = tempPos;
+        lineRenderer.SetPosition(1, tempPos);
+    }
+
+    private void OnMouseUp()
+    {
+        lineRenderer.SetPosition(1, pivot.position);
     }
 }

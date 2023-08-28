@@ -815,7 +815,7 @@ Transform:
   m_GameObject: {fileID: 2113487111}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15, y: 0.54, z: 0}
+  m_LocalPosition: {x: -0.18, y: 0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1004,6 +1004,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sling
       objectReference: {fileID: 0}
+    - target: {fileID: 9102236304378057842, guid: a7848c163d9139c49938790f312cb0ed, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1085,6 +1089,10 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4234559977903821777, guid: d5de8b7f1f865b94693a05a8aa74c34b, type: 3}
+      propertyPath: pivot
+      value: 
+      objectReference: {fileID: 2113487112}
     - target: {fileID: 5611309994354044298, guid: d5de8b7f1f865b94693a05a8aa74c34b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.58
@@ -1128,6 +1136,10 @@ PrefabInstance:
     - target: {fileID: 8516988344187852341, guid: d5de8b7f1f865b94693a05a8aa74c34b, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8987701198929232765, guid: d5de8b7f1f865b94693a05a8aa74c34b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
