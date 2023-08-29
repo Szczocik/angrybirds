@@ -5,19 +5,28 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] float force = 5f;
     [SerializeField] Transform pivot;
+
     Camera cam;
-    Vector3 tempPos;
+    Rigidbody rb;
     LineRenderer lineRenderer;
 
+    Vector3 tempPos;
+    Vector3 dir;
+    Vector3 startPos;
+
+    bool canBeMoved = true;
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         lineRenderer = GetComponent<LineRenderer>();
     }
     void Start()
     {
-        cam = Camera.main;  
+        cam = Camera.main;
+        startPos = transform.position;
         lineRenderer.SetPosition(0, pivot.position);
         lineRenderer.SetPosition(1, transform.position);
         RotatePlayer();

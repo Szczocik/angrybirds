@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class Pig : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.transform.CompareTag("ground"))
+        {
+            GetComponentInParent<PigsManager>()
+        }
     }
 }

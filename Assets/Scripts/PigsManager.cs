@@ -1,18 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PigsManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    GameManager gameManager;
+    UIManager uiManager;
+
+    int pigsTotal;
+    int pigsDestroyed = 0;
+
+    private void Start()
     {
-        
+        gameManager = GetComponent<GameManager>();
+        uiManager = GetComponent<UIManager>();
+
+        if (uiManager != null)
+        {
+            uiManager.UpdatePigStats(pigsDestroyed, pigsTotal);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RegisterPigDestroy()
     {
-        
+        pigsDestroyed++;
+
+        if (uiManager != null)
+        {
+            uiManager.UpdatePigStats(pigsDestroyed, pigsTotal);
+        }
+
+        if (pigsDestroyed == pigsTotal)
+        {
+            if (gameManager != null)
+            {
+                gameManager.SwitchScene();
+            }
+        }
+
     }
 }
