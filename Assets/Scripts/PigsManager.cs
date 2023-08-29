@@ -8,10 +8,11 @@ public class PigsManager : MonoBehaviour
     int pigsTotal;
     int pigsDestroyed = 0;
 
-    private void Start()
+    void Start()
     {
         gameManager = GetComponent<GameManager>();
         uiManager = GetComponent<UIManager>();
+        pigsTotal = transform.childCount;
 
         if (uiManager != null)
         {
