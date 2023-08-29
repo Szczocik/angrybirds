@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] Transform pivot;
 
     Camera cam;
-    Rigidbody rb;
+    Rigidbody2D rb;
     LineRenderer lineRenderer;
 
     Vector3 tempPos;
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         lineRenderer = GetComponent<LineRenderer>();
     }
     void Start()
@@ -34,21 +34,50 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(1))
+        {
+            ResetPlayer();
+        }
     }
 
     private void OnMouseDrag()
     {
-        tempPos = cam.ScreenToWorldPoint(Input.mousePosition); // zamieniamy pozycjê kursora myszy (piksel) na pozycjê w œwiecie (liczby)
-        tempPos.z = 0f; // camera ustawiona jest standardowo na z = -10 i dlatego musimy to zmieniæ na 0
-        transform.position = tempPos;
-        lineRenderer.SetPosition(1, tempPos);
-        RotatePlayer();
+        if (canBeMoved)
+        {
+            tempPos = cam.ScreenToWorldPoint(Input.mousePosition); // zamieniamy pozycjê kursora myszy (piksel) na pozycjê w œwiecie (liczby)
+            tempPos.z = 0f; // camera ustawiona jest standardowo na z = -10 i dlatego musimy to zmieniæ na 0
+            
+            if (tempPos.x < pivot.position.x)
+            {
+                transform.position = tempPos;
+            }
+            dir = pivot.position - transform.position;
+            lineRenderer.SetPosition(1, tempPos);
+            RotatePlayer();
+        }
     }
 
     private void OnMouseUp()
     {
+        if (canBeMoved)
+        {
+            rb.gravityScale = 1f;
+            rb.AddForce(dir * force, ForceMode2D.Impulse);
+            canBeMoved = false;
+            lineRenderer.SetPosition(1, pivot.position);
+        }
+    }
+
+    void ResetPlayer()
+    {
+        rb.gravityScale = 0f;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = 0f;
+        transform.position = startPos;
+        canBeMoved = true;
         lineRenderer.SetPosition(1, pivot.position);
+        RotatePlayer();
+
     }
 
     void RotatePlayer()

@@ -7,7 +7,7 @@ public class Pig : MonoBehaviour
     {
         if (collision.transform.CompareTag("ground"))
         {
-            GetComponentInParent<PigsManager>()
+            GetComponentInParent<PigsManager>();
         }
     }
 }
