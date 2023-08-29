@@ -10,8 +10,8 @@ public class PigsManager : MonoBehaviour
 
     void Start()
     {
-        gameManager = GetComponent<GameManager>();
-        uiManager = GetComponent<UIManager>();
+        gameManager = FindObjectOfType<GameManager>();
+        uiManager = FindObjectOfType<UIManager>();
         pigsTotal = transform.childCount;
 
         if (uiManager != null)
@@ -29,6 +29,7 @@ public class PigsManager : MonoBehaviour
             uiManager.UpdatePigStats(pigsDestroyed, pigsTotal);
         }
 
+
         if (pigsDestroyed == pigsTotal)
         {
             if (gameManager != null)
@@ -36,6 +37,5 @@ public class PigsManager : MonoBehaviour
                 gameManager.SwitchScene();
             }
         }
-
     }
 }
